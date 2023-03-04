@@ -4,7 +4,6 @@ import { z } from 'zod'
 import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 // TODO add form validation
-
 type goals =
     | 'Transitioning into entrepreneurship'
     | 'building a business strategy'
@@ -36,14 +35,22 @@ export const GoalsForm = (props: {
                             <Field name="goals" onChangeValidate={z.string()}>
                                 {({ value, setValue, errors }) => {
                                     return (
-                                        <div className="flex flex-col">
-                                            <fieldset>
+                                        <div className="flex flex-col gap-4">
+                                            <fieldset className="flex flex-col gap-4">
                                                 <legend className="text-3xl font-title text-mainred">
                                                     What are your goals right
                                                     now?
                                                 </legend>
 
-                                                <div className="">
+                                                <div
+                                                    className={clsx(
+                                                        'mt-12 rounded-xl border border-mainred max-w-[500px]',
+                                                        value ===
+                                                            'entrepreneurship'
+                                                            ? 'bg-paleorange'
+                                                            : 'bg-white'
+                                                    )}
+                                                >
                                                     <input
                                                         type="radio"
                                                         className="hidden"
@@ -60,13 +67,24 @@ export const GoalsForm = (props: {
                                                             )
                                                         }
                                                     />
-                                                    <label htmlFor="entrepreneurship">
+                                                    <label
+                                                        htmlFor="entrepreneurship"
+                                                        className="inline-block py-4 px-6 w-full h-full"
+                                                    >
                                                         transitioning into
                                                         entrepreneurship
                                                     </label>
                                                 </div>
 
-                                                <div>
+                                                <div
+                                                    className={clsx(
+                                                        ' rounded-xl border border-mainred max-w-[500px]',
+                                                        value ===
+                                                            'business strategy'
+                                                            ? 'bg-paleorange'
+                                                            : 'bg-white'
+                                                    )}
+                                                >
                                                     <input
                                                         type="radio"
                                                         id="business strategy"
@@ -83,12 +101,23 @@ export const GoalsForm = (props: {
                                                             )
                                                         }
                                                     />
-                                                    <label htmlFor="business strategy">
+                                                    <label
+                                                        htmlFor="business strategy"
+                                                        className="inline-block py-4 px-6 w-full h-full"
+                                                    >
                                                         Building a business
                                                         strategy
                                                     </label>
                                                 </div>
-                                                <div>
+                                                <div
+                                                    className={clsx(
+                                                        ' rounded-xl border border-mainred max-w-[500px]',
+                                                        value ===
+                                                            'scaling business'
+                                                            ? 'bg-paleorange'
+                                                            : 'bg-white'
+                                                    )}
+                                                >
                                                     <input
                                                         type="radio"
                                                         id="scaling business"
@@ -105,12 +134,23 @@ export const GoalsForm = (props: {
                                                             )
                                                         }
                                                     />
-                                                    <label htmlFor="scaling business">
+                                                    <label
+                                                        className="inline-block py-4 px-6 w-full h-full"
+                                                        htmlFor="scaling business"
+                                                    >
                                                         Scaling my business
                                                     </label>
                                                 </div>
 
-                                                <div>
+                                                <div
+                                                    className={clsx(
+                                                        ' rounded-xl border border-mainred max-w-[500px]',
+                                                        value ===
+                                                            'leadership skills'
+                                                            ? 'bg-paleorange'
+                                                            : 'bg-white'
+                                                    )}
+                                                >
                                                     <input
                                                         className="hidden"
                                                         type="radio"
@@ -127,7 +167,10 @@ export const GoalsForm = (props: {
                                                             )
                                                         }
                                                     />
-                                                    <label htmlFor="leadership skills">
+                                                    <label
+                                                        className="inline-block py-4 px-6 w-full h-full"
+                                                        htmlFor="leadership skills"
+                                                    >
                                                         Improving my leadership
                                                         skills
                                                     </label>
