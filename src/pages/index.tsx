@@ -1,5 +1,18 @@
 import Head from "next/head";
 import { Logo } from "@/components/svgs/logo";
+
+const items = Array(10)
+    .fill(0)
+    .map((num) => (
+        <div key={num} className="bg-gray-200 rounded-full">
+            <img
+                src="https://picsum.photos/200/300"
+                className="rounded-full w-object-cover"
+                alt=""
+            />
+        </div>
+    ));
+
 export default function Home() {
     return (
         <>
@@ -46,6 +59,16 @@ export default function Home() {
                             </button>
                         </div>
                     </div>
+                </section>
+                <section className="flex overflow-hidden gap-9 mt-12">{items}</section>
+                <section className="flex flex-col items-center mt-8 text-center">
+                    <h2 className="font-bold text-[40px] text-mainred">
+                        Connect with mentors that empathizes with you.
+                    </h2>
+                    <h3 className="font-medium text-[28px] max-w-[658px]">
+                        Lorem ipsum dolor sit amet consectetur. Orci dignissim amet semper
+                        mauris felis nam. Risus.
+                    </h3>
                 </section>
             </main>
         </>
