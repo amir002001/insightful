@@ -1,21 +1,27 @@
 import React from 'react'
 import { Form, Field } from 'houseform'
 import { z } from 'zod'
+import { clsx } from 'clsx'
 
-export const PersonalInfoForm = (props: {}) => {
-    const ethnicity_schema = z.string()
-    const location_schema = z.string()
-    const gender_schema = z.union([
-        z.literal('woman'),
-        z.literal('gender-diverse'),
-        z.literal('other'),
-    ])
-    const pronoun_schema = z.union([
-        z.literal('she/her/hers'),
-        z.literal('they/them/theirs'),
-        z.literal('ze/hir/hirs'),
-        z.literal('others'),
-    ])
+export const ethnicity_schema = z.string()
+export const location_schema = z.string().length(2)
+export const gender_schema = z.union([
+    z.literal('woman'),
+    z.literal('gender-diverse'),
+    z.literal('other'),
+])
+export const pronoun_schema = z.union([
+    z.literal('she/her/hers'),
+    z.literal('they/them/theirs'),
+    z.literal('ze/hir/hirs'),
+    z.literal('others'),
+])
+
+export const PersonalInfoForm = (props: {
+    set_form_values: React.Dispatch<React.SetStateAction<any>>
+    form_values: any
+    set_form_state: React.Dispatch<React.SetStateAction<number>>
+}) => {
     return (
         <div className="flex flex-col">
             <h2 className="text-3xl font-title text-mainred">
@@ -24,7 +30,12 @@ export const PersonalInfoForm = (props: {}) => {
             <a href="#" className="mt-2 underline">
                 Why am I being asked this?
             </a>
-            <Form onSubmit={(values) => console.log(values)}>
+            <Form
+                onSubmit={(values) => {
+                    props.set_form_values({ ...props.form_values, ...values })
+                    props.set_form_state((prev) => prev + 1)
+                }}
+            >
                 {({ isValid, submit }) => (
                     <form
                         className="mt-16"
@@ -196,6 +207,14 @@ export const PersonalInfoForm = (props: {}) => {
                                 }}
                             </Field>
                         </div>
+                        <button
+                            onClick={submit}
+                            className={clsx(
+                                'float-right py-3 px-6 mt-12 font-bold text-white uppercase rounded-full text-[24px] bg-mainred'
+                            )}
+                        >
+                            next
+                        </button>
                     </form>
                 )}
             </Form>
