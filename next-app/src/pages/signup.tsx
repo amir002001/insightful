@@ -41,7 +41,13 @@ const form_switch = ({
                 />
             )
         case 'message':
-            return <MessageForm />
+            return (
+                <MessageForm
+                    form_data={form_data}
+                    set_form_data={set_form_data}
+                    set_active_step={set_active_step}
+                />
+            )
         case 'goals':
             return (
                 <GoalsForm

@@ -20,7 +20,7 @@ export const GoalsForm = (props: {
             <Form
                 onSubmit={(values) => {
                     props.set_form_data({ ...props.form_data, ...values })
-                    props.set_active_step('goals')
+                    props.set_active_step('message')
                 }}
             >
                 {({ submit }) => (
@@ -194,7 +194,7 @@ export const GoalsForm = (props: {
                         </button>
                         <button
                             onClick={() =>
-                                props.set_active_step('personal info')
+                                props.set_active_step('professional background')
                             }
                             className={clsx(
                                 'mr-4 float-right py-3 px-6 mt-12 font-bold uppercase rounded-full text-[24px] text-mainred'
