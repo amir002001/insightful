@@ -2,10 +2,7 @@ import { Logo } from '@/components/svgs/logo'
 import Image from 'next/image'
 import Head from 'next/head'
 import { useState } from 'react'
-import { Field, Form } from 'houseform'
-import { z } from 'zod'
-
-const gender_schema = z.string()
+import { PersonalInfoForm } from '@/components/personal-info-form'
 
 const Signup = () => {
     const [active_step, set_active_step] = useState(0)
@@ -35,39 +32,7 @@ const Signup = () => {
                     <h1>Insightful</h1>
                 </div>
                 <section className="flex justify-center items-center w-full">
-                    <Form onSubmit={(values) => console.log(values)}>
-                        {({ isValid, submit }) => (
-                            <form
-                                onSubmit={(e) => {
-                                    e.preventDefault()
-                                    submit()
-                                }}
-                            >
-                                <Field
-                                    name="gender"
-                                    onBlurValidate={gender_schema}
-                                >
-                                    {({ value, setValue, onBlur, errors }) => {
-                                        return (
-                                            <>
-                                                <input
-                                                    value={value}
-                                                    onBlur={onBlur}
-                                                    onChange={(e) =>
-                                                        setValue(e.target.value)
-                                                    }
-                                                    placeholder={'Email'}
-                                                />
-                                                {errors.map((error) => (
-                                                    <p key={error}>{error}</p>
-                                                ))}
-                                            </>
-                                        )
-                                    }}
-                                </Field>
-                            </form>
-                        )}
-                    </Form>
+                    <PersonalInfoForm />
                 </section>
             </main>
         </>
