@@ -38,10 +38,10 @@ export default function Home() {
                             mauris felis nam. Risus.
                         </h2>
                         <div className="flex gap-2 mt-5">
-                            <button className="py-2 px-3 uppercase rounded-full border text-mainred font-bold bg-[#FFE0BC] border-mainred">
+                            <button className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred">
                                 Find Mentorship
                             </button>
-                            <button className="py-2 px-3 uppercase rounded-full border text-mainred font-bold bg-[#FFE0BC] border-mainred">
+                            <button className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred">
                                 Become a Mentor
                             </button>
                         </div>
