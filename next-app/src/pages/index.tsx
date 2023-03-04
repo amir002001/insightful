@@ -32,9 +32,11 @@ export default function Home() {
                             <h1>Insightful</h1>
                         </div>
                         <div className="flex gap-4">
-                            <button className="py-1 flex items-center px-5 text-sm font-bold gap-2 text-white uppercase rounded-full bg-[#5865F2]">
-                                <span>Continue with Discord</span>
-                                <Discord className="w-5" />
+                            <button className="flex gap-2 items-center py-1 px-5 text-sm font-bold uppercase rounded-full border text-mainred border-mainred">
+                                Login
+                            </button>
+                            <button className="flex gap-2 items-center py-1 px-5 text-sm font-bold text-white uppercase rounded-full bg-mainred">
+                                Sign Up
                             </button>
                         </div>
                     </div>
