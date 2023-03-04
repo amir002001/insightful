@@ -14,7 +14,7 @@ import { ProfessionalBackgroundForm } from '@/components/professional-background
 import { GoalsForm } from '@/components/goals-form'
 import { MessageForm } from '@/components/message-form'
 
-type FormStep =
+export type FormStep =
     | 'personal info'
     | 'professional background'
     | 'goals'
@@ -43,9 +43,21 @@ const form_switch = ({
         case 'message':
             return <MessageForm />
         case 'goals':
-            return <GoalsForm />
+            return (
+                <GoalsForm
+                    form_data={form_data}
+                    set_form_data={set_form_data}
+                    set_active_step={set_active_step}
+                />
+            )
         case 'professional background':
-            return <ProfessionalBackgroundForm />
+            return (
+                <ProfessionalBackgroundForm
+                    form_data={form_data}
+                    set_form_data={set_form_data}
+                    set_active_step={set_active_step}
+                />
+            )
     }
 }
 
@@ -78,7 +90,7 @@ const Signup = () => {
                         className="object-cover"
                     />
                 </div>
-                <section className="flex justify-center items-center w-full">
+                <section className="flex justify-center items-center w-full bg-mainpink">
                     {form_switch({
                         set_active_step: set_active_step,
                         set_form_data: set_form_data,

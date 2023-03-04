@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Field } from 'houseform'
 import { z } from 'zod'
 import { clsx } from 'clsx'
+import { FormStep } from '@/pages/signup'
 
 export const ethnicity_schema = z.string()
 export const location_schema = z.string().length(2)
@@ -20,10 +21,10 @@ export const pronoun_schema = z.union([
 export const PersonalInfoForm = (props: {
     set_form_data: React.Dispatch<React.SetStateAction<any>>
     form_data: any
-    set_active_step: React.Dispatch<React.SetStateAction<number>>
+    set_active_step: React.Dispatch<React.SetStateAction<FormStep>>
 }) => {
     return (
-        <div className="flex flex-col">
+        <div className="container flex flex-col p-24 max-w-[1200px]">
             <h2 className="text-3xl font-title text-mainred">
                 Personal Information
             </h2>
@@ -33,10 +34,10 @@ export const PersonalInfoForm = (props: {
             <Form
                 onSubmit={(values) => {
                     props.set_form_data({ ...props.form_data, ...values })
-                    props.set_active_step((prev) => prev + 1)
+                    props.set_active_step('professional background')
                 }}
             >
-                {({ isValid, submit }) => (
+                {({ submit }) => (
                     <form
                         className="mt-16"
                         onSubmit={(e) => {
