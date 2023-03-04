@@ -76,6 +76,7 @@ export const GoalsForm = (props: {
                                                     />
                                                     <label
                                                         htmlFor="entrepreneurship"
+                                                        tabIndex={0}
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                     >
                                                         transitioning into
@@ -110,6 +111,7 @@ export const GoalsForm = (props: {
                                                     />
                                                     <label
                                                         htmlFor="business strategy"
+                                                        tabIndex={0}
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                     >
                                                         Building a business
@@ -143,6 +145,7 @@ export const GoalsForm = (props: {
                                                     />
                                                     <label
                                                         className="inline-block py-4 px-6 w-full h-full"
+                                                        tabIndex={0}
                                                         htmlFor="scaling business"
                                                     >
                                                         Scaling my business
@@ -176,6 +179,7 @@ export const GoalsForm = (props: {
                                                     />
                                                     <label
                                                         className="inline-block py-4 px-6 w-full h-full"
+                                                        tabIndex={0}
                                                         htmlFor="leadership skills"
                                                     >
                                                         Improving my leadership
