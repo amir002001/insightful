@@ -2,12 +2,62 @@ import { Logo } from '@/components/svgs/logo'
 import Image from 'next/image'
 import Head from 'next/head'
 import { useState } from 'react'
-import { PersonalInfoForm } from '@/components/personal-info-form'
+import {
+    ethnicity_schema,
+    gender_schema,
+    location_schema,
+    PersonalInfoForm,
+    pronoun_schema,
+} from '@/components/personal-info-form'
+import { z } from 'zod'
+import { ProfessionalBackgroundForm } from '@/components/professional-background-form'
+import { GoalsForm } from '@/components/goals-form'
+import { MessageForm } from '@/components/message-form'
+
+type FormStep =
+    | 'personal info'
+    | 'professional background'
+    | 'goals'
+    | 'message'
+
+const form_switch = ({
+    step,
+    form_data,
+    set_form_data,
+    set_active_step,
+}: {
+    step: FormStep
+    form_data: any
+    set_form_data: any
+    set_active_step: any
+}) => {
+    switch (step) {
+        case 'personal info':
+            return (
+                <PersonalInfoForm
+                    form_data={form_data}
+                    set_form_data={set_form_data}
+                    set_active_step={set_active_step}
+                />
+            )
+        case 'message':
+            return <MessageForm />
+        case 'goals':
+            return <GoalsForm />
+        case 'professional background':
+            return <ProfessionalBackgroundForm />
+    }
+}
 
 const Signup = () => {
-    const [active_step, set_active_step] = useState(0)
+    const [active_step, set_active_step] = useState<FormStep>('personal info')
     const [form_data, set_form_data] = useState(0)
-
+    const signup_form_schema = z.object({
+        pronoun: pronoun_schema,
+        gender: gender_schema,
+        ethnicity: ethnicity_schema,
+        location: location_schema,
+    })
     return (
         <>
             <Head>
@@ -29,11 +79,12 @@ const Signup = () => {
                     />
                 </div>
                 <section className="flex justify-center items-center w-full">
-                    <PersonalInfoForm
-                        form_data={form_data}
-                        set_form_data={set_form_data}
-                        set_active_step={set_active_step}
-                    />
+                    {form_switch({
+                        set_active_step: set_active_step,
+                        set_form_data: set_form_data,
+                        form_data: form_data,
+                        step: active_step,
+                    })}
                 </section>
             </main>
         </>
