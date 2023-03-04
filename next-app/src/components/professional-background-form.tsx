@@ -3,6 +3,7 @@ import { Form, Field } from 'houseform'
 import { z } from 'zod'
 import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
+import { motion } from 'framer-motion'
 // TODO add form validation
 
 export const ProfessionalBackgroundForm = (props: {
@@ -11,7 +12,13 @@ export const ProfessionalBackgroundForm = (props: {
     set_active_step: React.Dispatch<React.SetStateAction<FormStep>>
 }) => {
     return (
-        <div className="container flex flex-col p-16 max-w-[1200px]">
+        <motion.div
+            initial={{ x: '-200vw' }}
+            animate={{ x: 0 }}
+            exit={{ x: '200vw' }}
+            transition={{ duration: 0.7 }}
+            className="container flex flex-col p-16 max-w-[1200px]"
+        >
             <h2 className="text-3xl font-title text-mainred">
                 Professional Background
             </h2>
@@ -132,6 +139,6 @@ export const ProfessionalBackgroundForm = (props: {
                     </form>
                 )}
             </Form>
-        </div>
+        </motion.div>
     )
 }

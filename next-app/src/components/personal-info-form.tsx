@@ -3,6 +3,7 @@ import { Form, Field } from 'houseform'
 import { z } from 'zod'
 import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
+import { motion } from 'framer-motion'
 
 export const ethnicity_schema = z.string()
 export const location_schema = z.string().length(2)
@@ -24,7 +25,12 @@ export const PersonalInfoForm = (props: {
     set_active_step: React.Dispatch<React.SetStateAction<FormStep>>
 }) => {
     return (
-        <div className="container flex flex-col p-24 max-w-[1200px]">
+        <motion.div
+            initial={{ x: '-200vh' }}
+            animate={{ x: 0 }}
+            className="container flex flex-col p-24 max-w-[1200px]"
+            transition={{ duration: 0.7 }}
+        >
             <h2 className="text-3xl font-title text-mainred">
                 Personal Information
             </h2>
@@ -219,6 +225,6 @@ export const PersonalInfoForm = (props: {
                     </form>
                 )}
             </Form>
-        </div>
+        </motion.div>
     )
 }

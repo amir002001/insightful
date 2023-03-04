@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { Form, Field } from 'houseform'
 import { z } from 'zod'
 import { clsx } from 'clsx'
@@ -16,7 +17,13 @@ export const GoalsForm = (props: {
     set_active_step: React.Dispatch<React.SetStateAction<FormStep>>
 }) => {
     return (
-        <div className="container flex flex-col p-16 max-w-[1200px]">
+        <motion.div
+            initial={{ x: '-200vw' }}
+            animate={{ x: 0 }}
+            exit={{ x: '200vw' }}
+            transition={{ duration: 0.7 }}
+            className="container flex flex-col p-16 max-w-[1200px]"
+        >
             <Form
                 onSubmit={(values) => {
                     props.set_form_data({ ...props.form_data, ...values })
@@ -205,6 +212,6 @@ export const GoalsForm = (props: {
                     </form>
                 )}
             </Form>
-        </div>
+        </motion.div>
     )
 }

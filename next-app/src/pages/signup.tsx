@@ -13,6 +13,7 @@ import { z } from 'zod'
 import { ProfessionalBackgroundForm } from '@/components/professional-background-form'
 import { GoalsForm } from '@/components/goals-form'
 import { MessageForm } from '@/components/message-form'
+import { AnimatePresence } from 'framer-motion'
 
 export type FormStep =
     | 'personal info'
@@ -81,12 +82,12 @@ const Signup = () => {
             <Head>
                 <title>Insightful</title>
             </Head>
-            <nav className="flex absolute top-6 left-6 z-10 gap-3 items-center text-xl font-title text-mainred">
+            <nav className="flex absolute top-6 left-6 z-20 gap-3 items-center text-xl font-title text-mainred">
                 <Logo className="w-9 h-9" />
                 <h1>Insightful</h1>
             </nav>
             <main className="flex relative w-screen h-screen">
-                <div className="relative w-1/3 h-full max-w-[460px]">
+                <div className="relative z-10 w-1/3 h-full max-w-[460px]">
                     <Image
                         alt="left background"
                         src={
@@ -97,12 +98,14 @@ const Signup = () => {
                     />
                 </div>
                 <section className="flex justify-center items-center w-full bg-mainpink">
-                    {form_switch({
-                        set_active_step: set_active_step,
-                        set_form_data: set_form_data,
-                        form_data: form_data,
-                        step: active_step,
-                    })}
+                    <AnimatePresence>
+                        {form_switch({
+                            set_active_step: set_active_step,
+                            set_form_data: set_form_data,
+                            form_data: form_data,
+                            step: active_step,
+                        })}
+                    </AnimatePresence>
                 </section>
             </main>
         </>
