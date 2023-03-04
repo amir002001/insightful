@@ -18,9 +18,9 @@ export const pronoun_schema = z.union([
 ])
 
 export const PersonalInfoForm = (props: {
-    set_form_values: React.Dispatch<React.SetStateAction<any>>
-    form_values: any
-    set_form_state: React.Dispatch<React.SetStateAction<number>>
+    set_form_data: React.Dispatch<React.SetStateAction<any>>
+    form_data: any
+    set_active_step: React.Dispatch<React.SetStateAction<number>>
 }) => {
     return (
         <div className="flex flex-col">
@@ -32,8 +32,8 @@ export const PersonalInfoForm = (props: {
             </a>
             <Form
                 onSubmit={(values) => {
-                    props.set_form_values({ ...props.form_values, ...values })
-                    props.set_form_state((prev) => prev + 1)
+                    props.set_form_data({ ...props.form_data, ...values })
+                    props.set_active_step((prev) => prev + 1)
                 }}
             >
                 {({ isValid, submit }) => (

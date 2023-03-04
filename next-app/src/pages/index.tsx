@@ -22,7 +22,6 @@ export default function Home() {
                 <title>Insightful</title>
             </Head>
             <nav className="w-screen">
-                <div className="w-full h-14 bg-gray-200"></div>
                 <div className="flex justify-between items-center p-6 bg-mainpink">
                     <div className="flex gap-3 items-center text-xl font-title text-mainred">
                         <Logo className="w-9 h-9" />

@@ -13,8 +13,9 @@ const Signup = () => {
             <Head>
                 <title>Insightful</title>
             </Head>
-            <nav className="w-screen">
-                <div className="w-full h-14 bg-gray-200"></div>
+            <nav className="flex absolute top-6 left-6 z-10 gap-3 items-center text-xl font-title text-mainred">
+                <Logo className="w-9 h-9" />
+                <h1>Insightful</h1>
             </nav>
             <main className="flex relative w-screen h-screen">
                 <div className="relative w-1/3 h-full max-w-[460px]">
@@ -27,12 +28,12 @@ const Signup = () => {
                         className="object-cover"
                     />
                 </div>
-                <div className="flex absolute top-6 left-6 gap-3 items-center text-xl font-title text-mainred">
-                    <Logo className="w-9 h-9" />
-                    <h1>Insightful</h1>
-                </div>
                 <section className="flex justify-center items-center w-full">
-                    <PersonalInfoForm />
+                    <PersonalInfoForm
+                        form_data={form_data}
+                        set_form_data={set_form_data}
+                        set_active_step={set_active_step}
+                    />
                 </section>
             </main>
         </>
