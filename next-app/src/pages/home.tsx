@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import Head from 'next/head'
 import { useAtom } from 'jotai'
 import { user_atom } from '@/atoms/user'
+import { mentor_atom } from '@/atoms/mentor'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
@@ -36,6 +37,7 @@ const get_normal_data = async (page: number) => {
 const Home = () => {
     const [page, set_page] = useState(0)
     const [user] = useAtom(user_atom)
+    const [_, set_mentor] = useAtom(mentor_atom)
     console.log(user)
     const router = useRouter()
     if (typeof window !== typeof undefined && user === null) router.push('/')
@@ -108,7 +110,11 @@ const Home = () => {
                         {best_data &&
                             best_data.data.map((mentor) => (
                                 <div
-                                    className="flex gap-5 p-2 mt-3 rounded-2xl border w-[480px] border-mainred"
+                                    onClick={() => {
+                                        set_mentor(mentor)
+                                        router.push('/mentor')
+                                    }}
+                                    className="flex gap-5 p-2 mt-3 rounded-2xl border cursor-pointer w-[480px] border-mainred"
                                     key={mentor.first_name + mentor.last_name}
                                 >
                                     <div className="relative w-32 h-32 shrink-0">
@@ -195,8 +201,12 @@ const Home = () => {
                                 {normal_data &&
                                     normal_data?.map((mentor) => (
                                         <div
+                                            onClick={() => {
+                                                set_mentor(mentor)
+                                                router.push('/mentor')
+                                            }}
                                             key={mentor.email}
-                                            className="p-4 w-full rounded-2xl border"
+                                            className="p-4 w-full rounded-2xl border cursor-pointer"
                                         >
                                             <div className="relative w-full h-48">
                                                 <img
