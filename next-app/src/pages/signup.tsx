@@ -13,6 +13,7 @@ import { z } from 'zod'
 import { ProfessionalBackgroundForm } from '@/components/professional-background-form'
 import { GoalsForm } from '@/components/goals-form'
 import { MessageForm } from '@/components/message-form'
+import Link from 'next/link'
 
 export type FormStep =
     | 'personal info'
@@ -79,16 +80,19 @@ const Signup = () => {
     return (
         <>
             <Head>
-                <title>Insightful</title>
+                <title>Insightful - signup</title>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
             </Head>
-            <nav className="flex absolute top-6 left-6 z-20 gap-3 items-center text-xl font-title text-mainred">
+            <Link
+                href={'/'}
+                className="flex absolute top-6 left-6 z-20 gap-3 items-center text-xl font-title text-mainred"
+            >
                 <Logo className="w-9 h-9" />
                 <h1>Insightful</h1>
-            </nav>
+            </Link>
             <main className="flex relative w-screen h-screen">
                 <div className="relative z-10 w-1/3 h-full max-w-[460px]">
                     <Image

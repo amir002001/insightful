@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Logo } from '@/components/svgs/logo'
-import { Discord } from '@/components/svgs/discord'
+import Link from 'next/link'
 
 const items = Array(10)
     .fill(0)
@@ -27,17 +27,26 @@ export default function Landing() {
             </Head>
             <nav className="w-screen">
                 <div className="flex justify-between items-center p-6 bg-mainpink">
-                    <div className="flex gap-3 items-center text-xl font-title text-mainred">
+                    <Link
+                        href="/"
+                        className="flex gap-3 items-center text-xl font-title text-mainred"
+                    >
                         <Logo className="w-9 h-9" />
                         <h1>Insightful</h1>
-                    </div>
+                    </Link>
                     <div className="flex gap-4">
-                        <button className="flex gap-2 items-center py-1 px-5 text-sm font-bold uppercase rounded-full border text-mainred border-mainred">
+                        <Link
+                            href="/login"
+                            className="flex gap-2 items-center py-1 px-5 text-sm font-bold uppercase rounded-full border text-mainred border-mainred"
+                        >
                             Login
-                        </button>
-                        <button className="flex gap-2 items-center py-1 px-5 text-sm font-bold text-white uppercase rounded-full bg-mainred">
+                        </Link>
+                        <Link
+                            href="/signup"
+                            className="flex gap-2 items-center py-1 px-5 text-sm font-bold text-white uppercase rounded-full bg-mainred"
+                        >
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </nav>
@@ -53,10 +62,16 @@ export default function Landing() {
                             dignissim amet semper mauris felis nam. Risus.
                         </h2>
                         <div className="flex gap-2 mt-5">
-                            <button className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred">
+                            <Link
+                                href={'/signup'}
+                                className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred"
+                            >
                                 Find Mentorship
-                            </button>
-                            <button className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred">
+                            </Link>
+                            <button
+                                disabled
+                                className="cursor-not-allowed py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred"
+                            >
                                 Become a Mentor
                             </button>
                         </div>
