@@ -6,6 +6,13 @@ import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
 // TODO add form validation
 
+const expertise_schema = z.string().min(1)
+const education_schema = z.union([
+    z.literal('diploma'),
+    z.literal('undergraduate degree'),
+    z.literal('masters degree'),
+])
+
 export const ProfessionalBackgroundForm = (props: {
     set_form_data: React.Dispatch<React.SetStateAction<any>>
     form_data: any
@@ -40,7 +47,10 @@ export const ProfessionalBackgroundForm = (props: {
                         }}
                     >
                         <div className="">
-                            <Field name="expertise" onBlurValidate={z.string()}>
+                            <Field
+                                name="expertise"
+                                onBlurValidate={expertise_schema}
+                            >
                                 {({ value, setValue, onBlur, errors }) => {
                                     return (
                                         <div className="flex flex-col">
@@ -69,7 +79,10 @@ export const ProfessionalBackgroundForm = (props: {
                                     )
                                 }}
                             </Field>
-                            <Field name="education" onBlurValidate={z.string()}>
+                            <Field
+                                name="education"
+                                onBlurValidate={education_schema}
+                            >
                                 {({ value, setValue, onBlur, errors }) => {
                                     return (
                                         <div className="flex flex-col mt-12">
@@ -80,7 +93,6 @@ export const ProfessionalBackgroundForm = (props: {
                                                 What gender do you identify
                                                 with?
                                             </label>
-
                                             <select
                                                 className="p-4 mt-4 rounded-2xl border max-w-[600px] border-mainred"
                                                 name="education"
@@ -109,7 +121,6 @@ export const ProfessionalBackgroundForm = (props: {
                                                     masters degree
                                                 </option>
                                             </select>
-
                                             {errors.map((error) => (
                                                 <p key={error}>{error}</p>
                                             ))}

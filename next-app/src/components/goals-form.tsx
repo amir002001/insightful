@@ -4,13 +4,13 @@ import { Form, Field } from 'houseform'
 import { z } from 'zod'
 import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
-// TODO add form validation
-type goals =
-    | 'Transitioning into entrepreneurship'
-    | 'building a business strategy'
-    | 'scaling my business'
-    | 'Imrpoving my leadership skills'
 
+const goals_schema = z.union([
+    z.literal('Transitioning into entrepreneurship'),
+    z.literal('building a business strategy'),
+    z.literal('scaling my business'),
+    z.literal('Imrpoving my leadership skills'),
+])
 export const GoalsForm = (props: {
     set_form_data: React.Dispatch<React.SetStateAction<any>>
     form_data: any
@@ -39,7 +39,7 @@ export const GoalsForm = (props: {
                         }}
                     >
                         <div className="">
-                            <Field name="goals" onChangeValidate={z.string()}>
+                            <Field name="goals" onChangeValidate={goals_schema}>
                                 {({ value, setValue, errors }) => {
                                     return (
                                         <div className="flex flex-col gap-4">

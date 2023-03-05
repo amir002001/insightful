@@ -5,8 +5,8 @@ import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
 
-export const ethnicity_schema = z.string()
-export const location_schema = z.string().length(2)
+export const ethnicity_schema = z.string().min(1)
+export const location_schema = z.string().min(1)
 export const gender_schema = z.union([
     z.literal('woman'),
     z.literal('gender-diverse'),

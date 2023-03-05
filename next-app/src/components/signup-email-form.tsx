@@ -18,7 +18,7 @@ export const SignupEmailForm = (props: {
             transition={{ duration: 0.7 }}
         >
             <h2 className="text-3xl font-title text-mainred">
-                Let's get your credentials
+                Let&apos;s get your credentials
             </h2>
             <Form
                 onSubmit={(values) => {
