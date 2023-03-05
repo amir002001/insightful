@@ -13,7 +13,6 @@ import { z } from 'zod'
 import { ProfessionalBackgroundForm } from '@/components/professional-background-form'
 import { GoalsForm } from '@/components/goals-form'
 import { MessageForm } from '@/components/message-form'
-import { AnimatePresence } from 'framer-motion'
 
 export type FormStep =
     | 'personal info'
@@ -81,6 +80,10 @@ const Signup = () => {
         <>
             <Head>
                 <title>Insightful</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
             </Head>
             <nav className="flex absolute top-6 left-6 z-20 gap-3 items-center text-xl font-title text-mainred">
                 <Logo className="w-9 h-9" />
@@ -98,14 +101,12 @@ const Signup = () => {
                     />
                 </div>
                 <section className="flex justify-center items-center w-full bg-mainpink">
-                    <AnimatePresence>
-                        {form_switch({
-                            set_active_step: set_active_step,
-                            set_form_data: set_form_data,
-                            form_data: form_data,
-                            step: active_step,
-                        })}
-                    </AnimatePresence>
+                    {form_switch({
+                        set_active_step: set_active_step,
+                        set_form_data: set_form_data,
+                        form_data: form_data,
+                        step: active_step,
+                    })}
                 </section>
             </main>
         </>

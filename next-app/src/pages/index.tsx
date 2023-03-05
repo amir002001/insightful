@@ -15,11 +15,15 @@ const items = Array(10)
         </div>
     ))
 
-export default function Home() {
+export default function Landing() {
     return (
         <>
             <Head>
                 <title>Insightful</title>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
             </Head>
             <nav className="w-screen">
                 <div className="flex justify-between items-center p-6 bg-mainpink">
