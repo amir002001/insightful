@@ -25,7 +25,7 @@ export const MessageForm = (props: {
             <Form
                 onSubmit={(values) => {
                     props.set_form_data({ ...props.form_data, ...values })
-                    props.set_active_step('message')
+                    props.set_active_step('signup email')
                 }}
             >
                 {({ submit }) => (
@@ -70,7 +70,7 @@ export const MessageForm = (props: {
                                 'float-right py-3 px-6 mt-12 font-bold text-white uppercase rounded-full text-[24px] bg-mainred'
                             )}
                         >
-                            Done
+                            Next
                         </button>
                         <button
                             onClick={() => props.set_active_step('goals')}

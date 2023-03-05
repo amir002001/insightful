@@ -2,6 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@faker-js/faker': ^7.6.0
+  '@supabase/auth-helpers-nextjs': ^0.5.5
+  '@supabase/auth-helpers-react': ^0.3.1
   '@supabase/supabase-js': ^2.10.0
   '@types/node': 18.14.6
   '@types/react': 18.0.28
@@ -23,6 +25,8 @@ specifiers:
 
 dependencies:
   '@faker-js/faker': 7.6.0
+  '@supabase/auth-helpers-nextjs': 0.5.5_ku2vntnma2imfrsyohnkxzette
+  '@supabase/auth-helpers-react': 0.3.1_ku2vntnma2imfrsyohnkxzette
   '@supabase/supabase-js': 2.10.0
   '@types/node': 18.14.6
   '@types/react': 18.0.28
@@ -272,6 +276,31 @@ packages:
 
   /@rushstack/eslint-patch/1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
+    dev: false
+
+  /@supabase/auth-helpers-nextjs/0.5.5_ku2vntnma2imfrsyohnkxzette:
+    resolution: {integrity: sha512-IJp6XDvLpPOg7r1YU14jmqlOYHOB0MeXZgmbIg6LHFYU8yMBczWu9c1A63plFVnXRtLUMAlcNISkrgHZMc0VdA==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.0.4
+    dependencies:
+      '@supabase/auth-helpers-shared': 0.3.0_ku2vntnma2imfrsyohnkxzette
+      '@supabase/supabase-js': 2.10.0
+    dev: false
+
+  /@supabase/auth-helpers-react/0.3.1_ku2vntnma2imfrsyohnkxzette:
+    resolution: {integrity: sha512-g3SFv08Dz9FapNif/ZY1b7qKGlMJDyTLSayHBz3kb3FuYxg7aLWgQtydDhm5AGbc0XtvpIBuhGTIOVevwpdosA==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.0.4
+    dependencies:
+      '@supabase/supabase-js': 2.10.0
+    dev: false
+
+  /@supabase/auth-helpers-shared/0.3.0_ku2vntnma2imfrsyohnkxzette:
+    resolution: {integrity: sha512-6lKhVMBZnGdFelpZyvQDBQSOY+pglS6a5U4ieAqfKQ/rx3rSjRASR3UGh7V+el1re3xYe3ddVBWXw16rdVAzrQ==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.0.4
+    dependencies:
+      '@supabase/supabase-js': 2.10.0
     dev: false
 
   /@supabase/functions-js/2.1.0:

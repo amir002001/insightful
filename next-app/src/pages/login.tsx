@@ -1,49 +1,45 @@
 import { Logo } from '@/components/svgs/logo'
-import { Caret } from '@/components/svgs/caret'
-import clsx from 'clsx'
+import Image from 'next/image'
 import Head from 'next/head'
+import { useState } from 'react'
+import { z } from 'zod'
 import Link from 'next/link'
+import { LoginForm } from '@/components/login-form'
 
 const Login = () => {
+    const [form_data, set_form_data] = useState(0)
+
     return (
         <>
             <Head>
-                <title>Insightful - login</title>
+                <title>Insightful - signup</title>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
             </Head>
-            <nav className="flex justify-between items-center p-6 w-screen">
-                <div className="flex gap-8">
-                    <Link href="/" className="flex gap-3 items-center">
-                        <Logo className="w-9 h-9" />
-                        <h1 className="text-xl font-title text-mainred">
-                            Insightful
-                        </h1>
-                    </Link>
-                    <div className="flex gap-4 items-center">
-                        <button
-                            className={clsx(
-                                'rounded-lg px-4 py-3',
-                                'bg-mainpink'
-                            )}
-                        >
-                            Home
-                        </button>
-                        <button className={clsx('rounded-lg px-4 py-3')}>
-                            My Bookings
-                        </button>
-                    </div>
+            <Link
+                href={'/'}
+                className="flex absolute top-6 left-6 z-20 gap-3 items-center text-xl font-title text-mainred"
+            >
+                <Logo className="w-9 h-9" />
+                <h1>Insightful</h1>
+            </Link>
+            <main className="flex relative w-screen h-screen">
+                <div className="relative z-10 w-1/3 h-full max-w-[460px]">
+                    <Image
+                        alt="left background"
+                        src={
+                            'https://res.cloudinary.com/df3h8ffly/image/upload/v1677947958/Rectangle_7_1_i2nz50.webp'
+                        }
+                        fill
+                        className="object-cover"
+                    />
                 </div>
-                <div>
-                    <button className="flex">
-                        <span className="font-bold uppercase">Username</span>
-                        <Caret className="w-6" />
-                    </button>
-                </div>
-            </nav>
-            <main className="flex relative flex-col gap-12 pr-16 pl-24 w-screen h-screen"></main>
+                <section className="flex justify-center items-center w-full bg-mainpink">
+                    <LoginForm />
+                </section>
+            </main>
         </>
     )
 }

@@ -14,8 +14,10 @@ import { ProfessionalBackgroundForm } from '@/components/professional-background
 import { GoalsForm } from '@/components/goals-form'
 import { MessageForm } from '@/components/message-form'
 import Link from 'next/link'
+import { SignupEmailForm } from '@/components/signup-email-form'
 
 export type FormStep =
+    | 'signup email'
     | 'personal info'
     | 'professional background'
     | 'goals'
@@ -60,6 +62,14 @@ const form_switch = ({
         case 'professional background':
             return (
                 <ProfessionalBackgroundForm
+                    form_data={form_data}
+                    set_form_data={set_form_data}
+                    set_active_step={set_active_step}
+                />
+            )
+        case 'signup email':
+            return (
+                <SignupEmailForm
                     form_data={form_data}
                     set_form_data={set_form_data}
                     set_active_step={set_active_step}
