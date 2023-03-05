@@ -53,7 +53,7 @@ export const GoalsForm = (props: {
                                                     className={clsx(
                                                         'mt-12 rounded-xl border border-mainred max-w-[500px]',
                                                         value ===
-                                                            'entrepreneurship'
+                                                            'Transitioning into entrepreneurship'
                                                             ? 'bg-paleorange'
                                                             : 'bg-white'
                                                     )}
@@ -61,12 +61,12 @@ export const GoalsForm = (props: {
                                                     <input
                                                         type="radio"
                                                         className="hidden"
-                                                        id="entrepreneurship"
-                                                        name="game"
-                                                        value="entrepreneurship"
+                                                        id="Transitioning into entrepreneurship"
+                                                        name="goals"
+                                                        value="Transitioning into entrepreneurship"
                                                         checked={
                                                             value ===
-                                                            'entrepreneurship'
+                                                            'Transitioning into entrepreneurship'
                                                         }
                                                         onChange={(e) =>
                                                             setValue(
@@ -75,7 +75,7 @@ export const GoalsForm = (props: {
                                                         }
                                                     />
                                                     <label
-                                                        htmlFor="entrepreneurship"
+                                                        htmlFor="Transitioning into entrepreneurship"
                                                         tabIndex={0}
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                     >
@@ -88,20 +88,20 @@ export const GoalsForm = (props: {
                                                     className={clsx(
                                                         ' rounded-xl border border-mainred max-w-[500px]',
                                                         value ===
-                                                            'business strategy'
+                                                            'building a business strategy'
                                                             ? 'bg-paleorange'
                                                             : 'bg-white'
                                                     )}
                                                 >
                                                     <input
                                                         type="radio"
-                                                        id="business strategy"
+                                                        id="building a business strategy"
                                                         name="goals"
-                                                        value="business strategy"
+                                                        value="building a business strategy"
                                                         className="hidden"
                                                         checked={
                                                             value ===
-                                                            'business strategy'
+                                                            'building a business strategy'
                                                         }
                                                         onChange={(e) =>
                                                             setValue(
@@ -110,7 +110,7 @@ export const GoalsForm = (props: {
                                                         }
                                                     />
                                                     <label
-                                                        htmlFor="business strategy"
+                                                        htmlFor="building a business strategy"
                                                         tabIndex={0}
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                     >
@@ -122,20 +122,20 @@ export const GoalsForm = (props: {
                                                     className={clsx(
                                                         ' rounded-xl border border-mainred max-w-[500px]',
                                                         value ===
-                                                            'scaling business'
+                                                            'scaling my business'
                                                             ? 'bg-paleorange'
                                                             : 'bg-white'
                                                     )}
                                                 >
                                                     <input
                                                         type="radio"
-                                                        id="scaling business"
+                                                        id="scaling my business"
                                                         name="goals"
-                                                        value="scaling business"
+                                                        value="scaling my business"
                                                         className="hidden"
                                                         checked={
                                                             value ===
-                                                            'scaling business'
+                                                            'scaling my business'
                                                         }
                                                         onChange={(e) =>
                                                             setValue(
@@ -146,7 +146,7 @@ export const GoalsForm = (props: {
                                                     <label
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                         tabIndex={0}
-                                                        htmlFor="scaling business"
+                                                        htmlFor="scaling my business"
                                                     >
                                                         Scaling my business
                                                     </label>
@@ -156,7 +156,7 @@ export const GoalsForm = (props: {
                                                     className={clsx(
                                                         ' rounded-xl border border-mainred max-w-[500px]',
                                                         value ===
-                                                            'leadership skills'
+                                                            'Imrpoving my leadership skills'
                                                             ? 'bg-paleorange'
                                                             : 'bg-white'
                                                     )}
@@ -164,12 +164,12 @@ export const GoalsForm = (props: {
                                                     <input
                                                         className="hidden"
                                                         type="radio"
-                                                        id="leadership skills"
-                                                        name="game"
-                                                        value="leadership skills"
+                                                        id="Imrpoving my leadership skills"
+                                                        name="goals"
+                                                        value="Imrpoving my leadership skills"
                                                         checked={
                                                             value ===
-                                                            'leadership skills'
+                                                            'Imrpoving my leadership skills'
                                                         }
                                                         onChange={(e) =>
                                                             setValue(
@@ -180,7 +180,7 @@ export const GoalsForm = (props: {
                                                     <label
                                                         className="inline-block py-4 px-6 w-full h-full"
                                                         tabIndex={0}
-                                                        htmlFor="leadership skills"
+                                                        htmlFor="Imrpoving my leadership skills"
                                                     >
                                                         Improving my leadership
                                                         skills

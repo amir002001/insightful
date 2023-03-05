@@ -5,6 +5,9 @@ import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
 
+const email_schema = z.string().email()
+const password_schema = z.string().min(4)
+
 export const SignupEmailForm = (props: {
     set_form_data: React.Dispatch<React.SetStateAction<any>>
     form_data: any
@@ -23,7 +26,7 @@ export const SignupEmailForm = (props: {
             <Form
                 onSubmit={(values) => {
                     props.set_form_data({ ...props.form_data, ...values })
-                    props.set_active_step('signup email')
+                    console.log(props.form_data)
                 }}
             >
                 {({ submit }) => (
@@ -35,7 +38,7 @@ export const SignupEmailForm = (props: {
                         }}
                     >
                         <div className="grid grid-cols-2 gap-x-12 gap-y-24">
-                            <Field name="email" onBlurValidate={z.string()}>
+                            <Field name="email" onBlurValidate={email_schema}>
                                 {({ value, setValue, onBlur, errors }) => {
                                     return (
                                         <div className="flex flex-col">
@@ -63,7 +66,10 @@ export const SignupEmailForm = (props: {
                                     )
                                 }}
                             </Field>
-                            <Field name="password" onBlurValidate={z.string()}>
+                            <Field
+                                name="password"
+                                onBlurValidate={password_schema}
+                            >
                                 {({ value, setValue, onBlur, errors }) => {
                                     return (
                                         <div className="flex flex-col">

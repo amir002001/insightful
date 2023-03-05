@@ -5,7 +5,7 @@ import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
 // TODO add form validation
-
+const message_schema = z.string().min(1)
 export const MessageForm = (props: {
     set_form_data: React.Dispatch<React.SetStateAction<any>>
     form_data: any
@@ -37,8 +37,11 @@ export const MessageForm = (props: {
                         }}
                     >
                         <div className="">
-                            <Field name="message" onBlurValidate={z.string()}>
-                                {({ value, setValue, errors, onBlur }) => {
+                            <Field
+                                name="message"
+                                onBlurValidate={message_schema}
+                            >
+                                {({ value, setValue, onBlur }) => {
                                     return (
                                         <div>
                                             <label htmlFor="message">
