@@ -47,7 +47,7 @@ const Home = () => {
                 <h2 className="mt-8 text-5xl font-title text-mainred">
                     Welcome!
                 </h2>
-                <div className="flex">
+                <div className="flex gap-16">
                     <aside>
                         <h3 className="text-2xl font-bold">
                             Best Mentor Matches
@@ -88,7 +88,39 @@ const Home = () => {
                             </div>
                         ))}
                     </aside>
-                    <article></article>
+                    <article>
+                        <div className="flex gap-8">
+                            <h3 className="text-2xl font-bold">
+                                Upcoming mentorship session
+                            </h3>
+                            <button className="font-medium uppercase text-mainred">
+                                View All
+                            </button>
+                        </div>
+                        <div className="flex gap-2 mt-4">
+                            {Array.from(Array(2).keys()).map((key) => (
+                                <div
+                                    key={key}
+                                    className="flex gap-12 items-center p-4 rounded-2xl bg-mainpink"
+                                >
+                                    <div className="flex flex-col">
+                                        <span className="text-lg">Mar 8</span>
+                                        <span className="text-lg text-mainred">
+                                            1.00PM
+                                        </span>
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-xl font-bold">
+                                            Abdul
+                                        </span>
+                                        <span className="whitespace-nowrap bg-[#FF4F6E] px-3 py-1 rounded-full">
+                                            Leadership
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </article>
                 </div>
             </main>
         </>
