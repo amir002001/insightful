@@ -27,8 +27,11 @@ const get_best = async (user: User) => {
     return best as BestResponse
 }
 const get_normal_data = async (page: number) => {
-    const normal = await fetch(`api/mentor?${page}`).then((res) => res.json())
-    return normal as BestResponse
+    const normal = await fetch(`api/mentor?page=${page}`).then((res) =>
+        res.json()
+    )
+    const normal_data = (normal as BestResponse).data
+    return normal_data
 }
 const Home = () => {
     const [page, set_page] = useState(0)
@@ -189,42 +192,43 @@ const Home = () => {
                                 </button>
                             </div>
                             <div className="grid grid-cols-4 gap-4 mt-4">
-                                {best_data?.data.map((mentor) => (
-                                    <div
-                                        key={mentor.email}
-                                        className="p-4 w-full rounded-2xl border"
-                                    >
-                                        <div className="relative w-full h-48">
-                                            <img
-                                                src={
-                                                    'https://picsum.photos/200/200?' +
-                                                    mentor.email
-                                                }
-                                                alt="mentor profile"
-                                                className="bg-contain rounded-lg"
-                                            ></img>
+                                {normal_data &&
+                                    normal_data?.map((mentor) => (
+                                        <div
+                                            key={mentor.email}
+                                            className="p-4 w-full rounded-2xl border"
+                                        >
+                                            <div className="relative w-full h-48">
+                                                <img
+                                                    src={
+                                                        'https://picsum.photos/200/200?' +
+                                                        mentor.email
+                                                    }
+                                                    alt="mentor profile"
+                                                    className="bg-contain rounded-lg"
+                                                ></img>
+                                            </div>
+                                            <h4 className="mt-6 text-lg font-bold">
+                                                {mentor.first_name}{' '}
+                                                {mentor.last_name}
+                                            </h4>
+                                            <h5 className="text-sm">
+                                                {mentor.job_title}
+                                            </h5>
+                                            <div className="flex flex-wrap gap-2 mt-3 w-full">
+                                                {mentor.mentorship_topics.map(
+                                                    (topic) => (
+                                                        <span
+                                                            className="whitespace-nowrap text-white bg-[#FF4F6E] text-[10px] px-3 py-1 rounded-full"
+                                                            key={topic}
+                                                        >
+                                                            {topic}
+                                                        </span>
+                                                    )
+                                                )}
+                                            </div>
                                         </div>
-                                        <h4 className="mt-6 text-lg font-bold">
-                                            {mentor.first_name}{' '}
-                                            {mentor.last_name}
-                                        </h4>
-                                        <h5 className="text-sm">
-                                            {mentor.job_title}
-                                        </h5>
-                                        <div className="flex flex-wrap gap-2 mt-3 w-full">
-                                            {mentor.mentorship_topics.map(
-                                                (topic) => (
-                                                    <span
-                                                        className="whitespace-nowrap text-white bg-[#FF4F6E] text-[10px] px-3 py-1 rounded-full"
-                                                        key={topic}
-                                                    >
-                                                        {topic}
-                                                    </span>
-                                                )
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                             <button
                                 onClick={() => set_page((prev) => prev + 1)}
