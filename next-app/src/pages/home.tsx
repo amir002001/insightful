@@ -110,11 +110,11 @@ const Home = () => {
                                         <h5 className="text-sm">
                                             {mentor.job_title}
                                         </h5>
-                                        <div className="flex flex-wrap gap-2 w-full">
+                                        <div className="flex flex-wrap gap-2 mt-3 w-full">
                                             {mentor.mentorship_topics.map(
                                                 (topic) => (
                                                     <span
-                                                        className="whitespace-nowrap bg-[#FF4F6E] px-3 py-1 rounded-full"
+                                                        className="whitespace-nowrap text-[10px] bg-[#FF4F6E] px-3 py-1 rounded-full"
                                                         key={topic}
                                                     >
                                                         {topic}
@@ -126,7 +126,7 @@ const Home = () => {
                                 </div>
                             ))}
                     </aside>
-                    <article>
+                    <article className="w-full">
                         <div className="flex gap-8">
                             <h3 className="text-2xl font-bold">
                                 Upcoming mentorship session
@@ -162,6 +162,55 @@ const Home = () => {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="w-full">
+                            <div className="flex justify-between mt-12">
+                                <h4 className="text-2xl font-bold">
+                                    Browse all mentors
+                                </h4>
+                                <button
+                                    disabled
+                                    className="font-medium uppercase cursor-not-allowed"
+                                >
+                                    Filter
+                                </button>
+                            </div>
+                            <div className="grid grid-cols-4 gap-4 mt-4">
+                                {best_data?.data.map((mentor) => (
+                                    <div
+                                        key={mentor.email}
+                                        className="p-4 w-full rounded-2xl border"
+                                    >
+                                        <div className="relative w-full h-48">
+                                            <Image
+                                                src="https://picsum.photos/200/200"
+                                                fill
+                                                alt="mentor profile"
+                                                className="bg-contain rounded-lg"
+                                            ></Image>
+                                        </div>
+                                        <h4 className="text-lg font-bold">
+                                            {mentor.first_name}{' '}
+                                            {mentor.last_name}
+                                        </h4>
+                                        <h5 className="text-sm">
+                                            {mentor.job_title}
+                                        </h5>
+                                        <div className="flex flex-wrap gap-2 mt-3 w-full">
+                                            {mentor.mentorship_topics.map(
+                                                (topic) => (
+                                                    <span
+                                                        className="whitespace-nowrap bg-[#FF4F6E] text-[10px] px-3 py-1 rounded-full"
+                                                        key={topic}
+                                                    >
+                                                        {topic}
+                                                    </span>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </article>
                 </div>
