@@ -49,10 +49,11 @@ type Mentor = {
   mentorship_topics: MentorTopic[];
   rationale: string;
   email: string;
+  embedding: number[];
 };
 
 const generate_lore = async (
-  mentor: Omit<Mentor, "rationale" | "email">
+  mentor: Omit<Mentor, "rationale" | "email" | "embedding">
 ): Promise<string> => {
   const topics_formatted = mentor.mentorship_topics.join(", ");
   const prompt = `I'm writing a story for ${mentor.first_name} ${mentor.last_name}. This person is a ${mentor.job_title}. Their pronouns are \"${mentor.pronouns}\". Their gender is ${mentor.gender}. Their education is ${mentor.education}. They are an expert in heart ${mentor.expertise}. They are from ${mentor.ethnicity}. They currently live in ${mentor.location}. They want to mentor students regarding topics ${topics_formatted}. Generate a story  (around 400 tokens) from ${mentor.first_name}'s perspective (first person) about why they want to start mentoring, mentioning their life story and their struggles:`;
@@ -96,7 +97,12 @@ const create_fake_mentor = async (): Promise<Mentor> => {
   const email = `${first_name.replaceAll(" ", ".").toLowerCase()}.${last_name
     .replaceAll(" ", ".")
     .toLowerCase()}@${faker.internet.domainName()}`;
-
+  const embed_input = `name: ${first_name} ${last_name}. Job title: ${job_title}. gender: ${gender}. ethnicity: ${ethnicity}. location: ${location}. pronouns: ${pronouns}. expertise: ${expertise}. education: ${education}. mentorship topics: ${mentorship_topics}. rationale: ${rationale}`;
+  const embedding_response = await openai.createEmbedding({
+    input: embed_input,
+    model: "text-embedding-ada-002",
+  });
+  const [{ embedding }] = embedding_response.data.data;
   return {
     first_name,
     last_name,
@@ -110,12 +116,15 @@ const create_fake_mentor = async (): Promise<Mentor> => {
     mentorship_topics,
     rationale,
     email,
+    embedding,
   };
 };
 
 const main = async () => {
-  const mentor = await create_fake_mentor();
-  await supabase.from("countries").insert({ name: "amir" });
+  for (let i = 0; i < 20; i++) {
+    const mentor = await create_fake_mentor();
+    const res = await supabase.from("mentors").insert(mentor);
+    console.log(res.error, res.statusText, res.count);
+  }
 };
-
 main();
