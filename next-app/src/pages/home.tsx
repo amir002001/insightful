@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
 import { Mentor, User } from './api/best'
+import { useState } from 'react'
 export interface BestResponse {
     error: null
     data: Mentor[]
@@ -25,8 +26,12 @@ const get_best = async (user: User) => {
     }).then((res) => res.json())
     return best as BestResponse
 }
-
+const get_normal_data = async (page: number) => {
+    const normal = await fetch(`api/mentor?${page}`).then((res) => res.json())
+    return normal as BestResponse
+}
 const Home = () => {
+    const [page, set_page] = useState(0)
     const [user] = useAtom(user_atom)
     console.log(user)
     const router = useRouter()
@@ -35,6 +40,14 @@ const Home = () => {
         queryFn: async () => {
             return await get_best(user as unknown as User)
         },
+        queryKey: 'best',
+    })
+    const { data: normal_data } = useQuery({
+        queryFn: async () => {
+            return await get_normal_data(page)
+        },
+        queryKey: ['normal', page],
+        keepPreviousData: true,
     })
     return (
         <>
@@ -74,7 +87,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="flex">
+                    <button disabled className="flex cursor-not-allowed">
                         <span className="font-bold uppercase">Username</span>
                         <Caret className="w-6" />
                     </button>
@@ -96,14 +109,14 @@ const Home = () => {
                                     key={mentor.first_name + mentor.last_name}
                                 >
                                     <div className="relative w-32 h-32 shrink-0">
-                                        <Image
+                                        <img
                                             alt="profilepfp"
                                             src={
-                                                'https://picsum.photos/200/200'
+                                                'https://picsum.photos/200/200?' +
+                                                mentor.email
                                             }
-                                            fill
                                             className="object-contain rounded-lg"
-                                        ></Image>
+                                        ></img>
                                     </div>
                                     <div className="flex flex-col">
                                         <h4 className="text-lg font-bold">{`${mentor.first_name} ${mentor.last_name}`}</h4>
@@ -114,7 +127,7 @@ const Home = () => {
                                             {mentor.mentorship_topics.map(
                                                 (topic) => (
                                                     <span
-                                                        className="whitespace-nowrap text-[10px] bg-[#FF4F6E] px-3 py-1 rounded-full"
+                                                        className="whitespace-nowrap text-[10px] bg-[#FF4F6E] px-3 py-1 rounded-full text-white"
                                                         key={topic}
                                                     >
                                                         {topic}
@@ -154,7 +167,7 @@ const Home = () => {
                                         <span className="text-xl font-bold">
                                             Krystal
                                         </span>
-                                        <span className="whitespace-nowrap bg-[#FF4F6E] px-3 py-1 rounded-full">
+                                        <span className="whitespace-nowrap text-white bg-[#FF4F6E] px-3 py-1 rounded-full">
                                             {key == 0
                                                 ? 'Fundraising and Finance'
                                                 : 'Product Development'}
@@ -163,7 +176,7 @@ const Home = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="w-full">
+                        <div className="flex flex-col w-full">
                             <div className="flex justify-between mt-12">
                                 <h4 className="text-2xl font-bold">
                                     Browse all mentors
@@ -182,14 +195,16 @@ const Home = () => {
                                         className="p-4 w-full rounded-2xl border"
                                     >
                                         <div className="relative w-full h-48">
-                                            <Image
-                                                src="https://picsum.photos/200/200"
-                                                fill
+                                            <img
+                                                src={
+                                                    'https://picsum.photos/200/200?' +
+                                                    mentor.email
+                                                }
                                                 alt="mentor profile"
                                                 className="bg-contain rounded-lg"
-                                            ></Image>
+                                            ></img>
                                         </div>
-                                        <h4 className="text-lg font-bold">
+                                        <h4 className="mt-6 text-lg font-bold">
                                             {mentor.first_name}{' '}
                                             {mentor.last_name}
                                         </h4>
@@ -200,7 +215,7 @@ const Home = () => {
                                             {mentor.mentorship_topics.map(
                                                 (topic) => (
                                                     <span
-                                                        className="whitespace-nowrap bg-[#FF4F6E] text-[10px] px-3 py-1 rounded-full"
+                                                        className="whitespace-nowrap text-white bg-[#FF4F6E] text-[10px] px-3 py-1 rounded-full"
                                                         key={topic}
                                                     >
                                                         {topic}
@@ -211,6 +226,12 @@ const Home = () => {
                                     </div>
                                 ))}
                             </div>
+                            <button
+                                onClick={() => set_page((prev) => prev + 1)}
+                                className="self-center mt-8 font-bold uppercase"
+                            >
+                                Load More
+                            </button>
                         </div>
                     </article>
                 </div>

@@ -2,18 +2,16 @@ import Head from 'next/head'
 import { Logo } from '@/components/svgs/logo'
 import Link from 'next/link'
 
-const items = Array(10)
-    .fill(0)
-    .map((num) => (
-        <div key={num} className="bg-gray-200 rounded-full">
-            {/* eslint-disable-next-line @next/next/no-img-element*/}
-            <img
-                src="https://picsum.photos/200/300"
-                className="rounded-full w-object-cover"
-                alt=""
-            />
-        </div>
-    ))
+const items = Array.from(Array(10).keys()).map((num) => (
+    <div key={num} className="bg-gray-200 rounded-full">
+        {/* eslint-disable-next-line @next/next/no-img-element*/}
+        <img
+            src={'https://picsum.photos/200/300?' + num}
+            className="rounded-full w-object-cover"
+            alt=""
+        />
+    </div>
+))
 
 export default function Landing() {
     return (
