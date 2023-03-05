@@ -1,7 +1,7 @@
 import { Logo } from '@/components/svgs/logo'
 import Image from 'next/image'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     ethnicity_schema,
     gender_schema,
@@ -80,13 +80,7 @@ const form_switch = ({
 
 const Signup = () => {
     const [active_step, set_active_step] = useState<FormStep>('personal info')
-    const [form_data, set_form_data] = useState(0)
-    const signup_form_schema = z.object({
-        pronoun: pronoun_schema,
-        gender: gender_schema,
-        ethnicity: ethnicity_schema,
-        location: location_schema,
-    })
+    const [form_data, set_form_data] = useState({})
     return (
         <>
             <Head>

@@ -90,8 +90,7 @@ export const ProfessionalBackgroundForm = (props: {
                                                 className="font-bold text-[24px] text-mainred"
                                                 htmlFor="education"
                                             >
-                                                What gender do you identify
-                                                with?
+                                                What is your level of education?
                                             </label>
                                             <select
                                                 className="p-4 mt-4 rounded-2xl border max-w-[600px] border-mainred"

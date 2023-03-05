@@ -4,6 +4,9 @@ import { z } from 'zod'
 import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { useAtom } from 'jotai'
+import { user_atom } from '@/atoms/user'
 
 const email_schema = z.string().email()
 const password_schema = z.string().min(4)
@@ -13,6 +16,8 @@ export const SignupEmailForm = (props: {
     form_data: any
     set_active_step: React.Dispatch<React.SetStateAction<FormStep>>
 }) => {
+    const [user, set_user] = useAtom(user_atom)
+    const router = useRouter()
     return (
         <motion.div
             initial={{ x: '-200vh' }}
@@ -24,9 +29,9 @@ export const SignupEmailForm = (props: {
                 Let&apos;s get your credentials
             </h2>
             <Form
-                onSubmit={(values) => {
-                    props.set_form_data({ ...props.form_data, ...values })
-                    console.log(props.form_data)
+                onSubmit={async (values) => {
+                    set_user(props.form_data)
+                    router.push('/home')
                 }}
             >
                 {({ submit }) => (

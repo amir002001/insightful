@@ -35,12 +35,12 @@ export default function Landing() {
                         <h1>Insightful</h1>
                     </Link>
                     <div className="flex gap-4">
-                        <Link
-                            href="/login"
-                            className="flex gap-2 items-center py-1 px-5 text-sm font-bold uppercase rounded-full border text-mainred border-mainred"
+                        <button
+                            disabled
+                            className="flex gap-2 items-center py-1 px-5 text-sm font-bold uppercase rounded-full border cursor-not-allowed text-mainred border-mainred"
                         >
                             Login
-                        </Link>
+                        </button>
                         <Link
                             href="/signup"
                             className="flex gap-2 items-center py-1 px-5 text-sm font-bold text-white uppercase rounded-full bg-mainred"
