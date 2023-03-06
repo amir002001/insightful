@@ -114,7 +114,7 @@ const Home = () => {
                                         set_mentor(mentor)
                                         router.push('/mentor')
                                     }}
-                                    className="flex gap-5 p-2 mt-3 rounded-2xl border cursor-pointer w-[480px] border-mainred"
+                                    className="flex gap-5 p-2 mt-3 rounded-2xl border cursor-pointer w-[400px] border-mainred"
                                     key={mentor.first_name + mentor.last_name}
                                 >
                                     <div className="relative w-32 h-32 shrink-0">
