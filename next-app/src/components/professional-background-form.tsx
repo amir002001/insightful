@@ -8,9 +8,11 @@ import { motion } from 'framer-motion'
 
 const expertise_schema = z.string().min(1)
 const education_schema = z.union([
-    z.literal('diploma'),
+    z.literal('less than highschool diploma'),
+    z.literal('highschool diploma'),
     z.literal('undergraduate degree'),
     z.literal('masters degree'),
+    z.literal('doctorate'),
 ])
 
 export const ProfessionalBackgroundForm = (props: {
@@ -90,7 +92,7 @@ export const ProfessionalBackgroundForm = (props: {
                                                 className="font-bold text-[24px] text-mainred"
                                                 htmlFor="education"
                                             >
-                                                What is your level of education?
+                                                Highest level of education
                                             </label>
                                             <select
                                                 className="p-4 mt-4 rounded-2xl border max-w-[600px] border-mainred"
@@ -110,14 +112,20 @@ export const ProfessionalBackgroundForm = (props: {
                                                 >
                                                     Select
                                                 </option>
-                                                <option value="diploma">
-                                                    diploma
+                                                <option value="less than highschool diploma">
+                                                    less than highschool diploma
+                                                </option>
+                                                <option value="highschool diploma">
+                                                    highschool diploma
                                                 </option>
                                                 <option value="undergraduate degree">
                                                     undergraduate degree
                                                 </option>
                                                 <option value="masters degree">
                                                     masters degree
+                                                </option>
+                                                <option value="doctorate">
+                                                    doctorate
                                                 </option>
                                             </select>
                                             {errors.map((error) => (
