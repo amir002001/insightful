@@ -5,7 +5,15 @@ import { clsx } from 'clsx'
 import { FormStep } from '@/pages/signup'
 import { motion } from 'framer-motion'
 
-export const ethnicity_schema = z.string().min(1)
+export const ethnicity_schema = z.union([
+    z.literal('Indigenous'),
+    z.literal('Asian'),
+    z.literal('Black/African American'),
+    z.literal('Hispanic/Latino'),
+    z.literal('Native Hawaiian/Pacific Islander'),
+    z.literal('White'),
+    z.literal('other'),
+])
 export const location_schema = z.string().min(1)
 export const gender_schema = z.union([
     z.literal('woman'),
@@ -156,7 +164,7 @@ export const PersonalInfoForm = (props: {
                                 }}
                             </Field>
                             <Field
-                                name="pronouns"
+                                name="location"
                                 onBlurValidate={location_schema}
                             >
                                 {({ value, setValue, onBlur, errors }) => {
@@ -188,9 +196,9 @@ export const PersonalInfoForm = (props: {
                             </Field>
                             <Field
                                 name="ethnicity"
-                                onBlurValidate={ethnicity_schema}
+                                onChangeValidate={ethnicity_schema}
                             >
-                                {({ value, setValue, onBlur, errors }) => {
+                                {({ value, setValue, errors }) => {
                                     return (
                                         <div className="flex flex-col">
                                             <label
@@ -199,17 +207,45 @@ export const PersonalInfoForm = (props: {
                                             >
                                                 What&apos;s your ethnicity?
                                             </label>
-                                            <input
+
+                                            <select
                                                 className="p-4 mt-4 rounded-2xl border border-mainred"
-                                                id="ethnicity"
                                                 name="ethnicity"
+                                                id="ethnicity"
                                                 value={value}
-                                                onBlur={onBlur}
                                                 onChange={(e) =>
                                                     setValue(e.target.value)
                                                 }
-                                                placeholder={'ethnicity'}
-                                            />
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                    hidden
+                                                >
+                                                    Select
+                                                </option>
+                                                <option value="woman">
+                                                    Asian
+                                                </option>
+                                                <option value="Black/African American">
+                                                    Black/African American
+                                                </option>
+                                                <option value="Hispanic/Latino">
+                                                    Hispanic/Latino
+                                                </option>
+                                                <option value="Native Hawaiian/Pacific Islander">
+                                                    Native Hawaiian/Pacific
+                                                    Islander
+                                                </option>
+                                                <option value="White">
+                                                    White
+                                                </option>
+                                                <option value="other">
+                                                    other
+                                                </option>
+                                            </select>
+
                                             {errors.map((error) => (
                                                 <p key={error}>{error}</p>
                                             ))}
