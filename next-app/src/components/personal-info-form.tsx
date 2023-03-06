@@ -9,8 +9,9 @@ export const ethnicity_schema = z.string().min(1)
 export const location_schema = z.string().min(1)
 export const gender_schema = z.union([
     z.literal('woman'),
-    z.literal('gender-diverse'),
-    z.literal('other'),
+    z.literal('transgender'),
+    z.literal('non-binary/non-comforming'),
+    z.literal('other/prefer not to say'),
 ])
 export const pronoun_schema = z.union([
     z.literal('she/her/hers'),
@@ -85,11 +86,14 @@ export const PersonalInfoForm = (props: {
                                                 <option value="woman">
                                                     woman
                                                 </option>
-                                                <option value="gender-diverse">
-                                                    gender-diverse
+                                                <option value="transgender">
+                                                    transgender
                                                 </option>
-                                                <option value="other">
-                                                    other
+                                                <option value="non-binary/non-comforming">
+                                                    non-binary/non-comforming
+                                                </option>
+                                                <option value="other/prefer not to say">
+                                                    other/prefer not to say
                                                 </option>
                                             </select>
 
