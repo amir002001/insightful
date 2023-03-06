@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
-import Image from 'next/Image'
+import Image from 'next/image'
 import { Logo } from '@/components/svgs/logo'
 import Link from 'next/link'
 
