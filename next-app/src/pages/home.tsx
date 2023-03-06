@@ -10,6 +10,7 @@ import { useQuery } from 'react-query'
 import Link from 'next/link'
 import { Mentor, User } from './api/best'
 import { useState } from 'react'
+import Image from 'next/image'
 export interface BestResponse {
     error: null
     data: Mentor[]
@@ -62,7 +63,7 @@ const Home = () => {
                     content="width=device-width, initial-scale=1"
                 />
             </Head>
-            <nav className="flex justify-between items-center p-6 w-screen">
+            <nav className="flex justify-between items-center p-6 w-screen border-b">
                 <div className="flex gap-8">
                     <Link href="/" className="flex gap-3 items-center">
                         <Logo className="w-9 h-9" />
@@ -97,13 +98,13 @@ const Home = () => {
                     </button>
                 </div>
             </nav>
-            <main className="flex relative flex-col gap-12 pr-16 pl-24 w-screen h-screen">
-                <h2 className="mt-8 text-5xl font-title text-mainred">
-                    Welcome!
-                </h2>
+            <main className="flex relative flex-col gap-12 pr-16 w-screen h-screen">
                 <div className="flex gap-16">
-                    <aside>
-                        <h3 className="text-2xl font-bold">
+                    <aside className="relative p-16 bg-mainpink">
+                        <h2 className="text-5xl font-title text-mainred">
+                            Welcome!
+                        </h2>
+                        <h3 className="mt-4 text-2xl font-bold">
                             Best Mentor Matches
                         </h3>
                         {best_data &&
@@ -147,7 +148,7 @@ const Home = () => {
                                 </div>
                             ))}
                     </aside>
-                    <article className="w-full">
+                    <article className="mt-16 w-full">
                         <div className="flex gap-8">
                             <h3 className="text-2xl font-bold">
                                 Upcoming mentorship session
