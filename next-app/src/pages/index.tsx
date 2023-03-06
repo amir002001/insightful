@@ -1,17 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Image from 'next/Image'
 import { Logo } from '@/components/svgs/logo'
 import Link from 'next/link'
 
 const items = Array.from(Array(20).keys()).map((num) => (
-    <div key={num} className="bg-gray-200 rounded-full">
-        {/* eslint-disable-next-line @next/next/no-img-element*/}
-        <img
-            src={'https://picsum.photos/200/300?' + num}
-            className="rounded-full w-object-cover"
-            alt=""
-        />
-    </div>
+    <img
+        key={num}
+        src={'https://picsum.photos/200/300?' + num}
+        className="rounded-full w-object-cover w-[90px] h-[124px]"
+        alt=""
+    />
 ))
 
 export default function Landing() {
@@ -56,12 +55,12 @@ export default function Landing() {
                             A career mentorship platform designed for the women
                             and gender-diverse community.
                         </h1>
-                        <h2 className="mt-2 w-2/3 font-medium text-[28px] max-w-[1200px]">
+                        <h2 className="mt-8 w-2/3 text-2xl font-medium max-w-[1200px]">
                             By providing equal opportunities and support to
                             women entrepreneurs, we can unlock their full
                             potential and drive innovation and economic growth.
                         </h2>
-                        <div className="flex gap-2 mt-5">
+                        <div className="flex gap-4 mt-8">
                             <Link
                                 href={'/signup'}
                                 className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full bg-mainred border-mainred"
@@ -86,7 +85,7 @@ export default function Landing() {
                     <h2 className="font-bold text-[40px] text-mainred">
                         Connect with mentors that empathizes with you.
                     </h2>
-                    <h3 className="font-medium text-[28px] max-w-[900px]">
+                    <h3 className="text-2xl max-w-[900px]">
                         By matching you with mentors with similar goals,
                         industry, and personal background, we are aiming to make
                         you feel empathized with and understood while
@@ -172,10 +171,10 @@ export default function Landing() {
                         Ready to be{' '}
                         <span className="text-mainred">insightful?</span>
                     </h2>
-                    <h3 className="text-3xl font-medium">
+                    <h3 className="mt-4 text-3xl font-medium">
                         Sign up below as a mentor or as a mentee!
                     </h3>
-                    <div className="flex gap-2 mt-5">
+                    <div className="flex gap-2 mt-10">
                         <Link
                             href={'/signup'}
                             className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full bg-mainred border-mainred"
