@@ -28,4 +28,17 @@
     .radio-reset {
         visibility: hidden;
     }
+
+    .carousel-track {
+        animation: slide-left 50s linear infinite;
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }

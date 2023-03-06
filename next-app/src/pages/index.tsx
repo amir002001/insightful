@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Logo } from '@/components/svgs/logo'
 import Link from 'next/link'
 
-const items = Array.from(Array(10).keys()).map((num) => (
+const items = Array.from(Array(20).keys()).map((num) => (
     <div key={num} className="bg-gray-200 rounded-full">
         {/* eslint-disable-next-line @next/next/no-img-element*/}
         <img
@@ -55,20 +55,21 @@ export default function Landing() {
                             A career mentorship platform designed for the women
                             and gender-diverse community.
                         </h1>
-                        <h2 className="mt-2 w-2/3 font-medium text-[28px] max-w-[1000px]">
-                            Lorem ipsum dolor sit amet consectetur. Orci
-                            dignissim amet semper mauris felis nam. Risus.
+                        <h2 className="mt-2 w-2/3 font-medium text-[28px] max-w-[1200px]">
+                            By providing equal opportunities and support to
+                            women entrepreneurs, we can unlock their full
+                            potential and drive innovation and economic growth.
                         </h2>
                         <div className="flex gap-2 mt-5">
                             <Link
                                 href={'/signup'}
-                                className="py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred"
+                                className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full bg-mainred border-mainred"
                             >
                                 Find Mentorship
                             </Link>
                             <button
                                 disabled
-                                className="cursor-not-allowed py-2 px-3 uppercase rounded-full border-2 text-mainred font-bold bg-[#FFE0BC] border-mainred"
+                                className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full cursor-not-allowed bg-mainred border-mainred"
                             >
                                 Become a Mentor
                             </button>
@@ -76,18 +77,66 @@ export default function Landing() {
                     </div>
                 </section>
                 <section className="flex overflow-hidden gap-9 mt-12">
-                    {items}
+                    <div className="flex flex-shrink-0 gap-8 carousel-track">
+                        {items}
+                    </div>
                 </section>
                 <section className="flex flex-col items-center mt-8 text-center">
                     <h2 className="font-bold text-[40px] text-mainred">
                         Connect with mentors that empathizes with you.
                     </h2>
-                    <h3 className="font-medium text-[28px] max-w-[658px]">
-                        Lorem ipsum dolor sit amet consectetur. Orci dignissim
-                        amet semper mauris felis nam. Risus.
+                    <h3 className="font-medium text-[28px] max-w-[900px]">
+                        By matching you with mentors with similar goals,
+                        industry, and personal background, we are aiming to make
+                        you feel empathized with and understood while
+                        progressing professionally.
                     </h3>
                 </section>
+                {/*TODO finish section*/}
+                <section className="hidden flex-col items-center mt-20 text-center">
+                    <h2 className="font-bold text-mainred text-[40px] font">
+                        Hear what our mentees have to say about Insightful!
+                    </h2>
+                </section>
+                <section className="flex flex-col items-center p-16 mt-16 text-center bg-mainpink">
+                    <h2 className="font-title text-[30px]">
+                        Ready to be{' '}
+                        <span className="text-mainred">insightful?</span>
+                    </h2>
+                    <h3 className="text-3xl font-medium">
+                        Sign up below as a mentor or as a mentee!
+                    </h3>
+                    <div className="flex gap-2 mt-5">
+                        <Link
+                            href={'/signup'}
+                            className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full bg-mainred border-mainred"
+                        >
+                            Find Mentorship
+                        </Link>
+                        <button
+                            disabled
+                            className="py-4 px-8 text-2xl font-bold text-white uppercase rounded-full cursor-not-allowed bg-mainred border-mainred"
+                        >
+                            Become a Mentor
+                        </button>
+                    </div>
+                </section>
             </main>
+            <footer className="flex justify-between py-16 px-32 w-screen">
+                <div className="flex gap-6">
+                    <span className="text-2xl font-bold">About Us</span>
+                    <span className="text-2xl font-bold">Contact Us</span>
+                    <span className="text-2xl font-bold">How We Work</span>
+                    <span className="text-2xl font-bold">FAQs</span>
+                </div>
+                <Link
+                    href="/"
+                    className="flex gap-3 items-center text-xl font-title text-mainred"
+                >
+                    <Logo className="w-9 h-9" />
+                    <h1>Insightful</h1>
+                </Link>
+            </footer>
         </>
     )
 }
