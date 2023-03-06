@@ -1,5 +1,4 @@
 import { Logo } from '@/components/svgs/logo'
-import Image from 'next/image'
 import { Caret } from '@/components/svgs/caret'
 import clsx from 'clsx'
 import Head from 'next/head'
@@ -41,7 +40,7 @@ const Home = () => {
     console.log(user)
     const router = useRouter()
     if (typeof window !== typeof undefined && user === null) router.push('/')
-    const { data: best_data, isLoading } = useQuery({
+    const { data: best_data } = useQuery({
         queryFn: async () => {
             return await get_best(user as unknown as User)
         },
@@ -136,7 +135,7 @@ const Home = () => {
                                             {mentor.mentorship_topics.map(
                                                 (topic) => (
                                                     <span
-                                                        className="whitespace-nowrap text-[10px] bg-[#FF4F6E] px-3 py-1 rounded-full text-white"
+                                                        className="whitespace-nowrap text-[10px] bg-[#ff4f6e] px-3 py-1 rounded-full text-white"
                                                         key={topic}
                                                     >
                                                         {topic}
