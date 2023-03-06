@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/Image'
 import { Logo } from '@/components/svgs/logo'
 import Link from 'next/link'
 
@@ -92,11 +93,79 @@ export default function Landing() {
                         progressing professionally.
                     </h3>
                 </section>
-                {/*TODO finish section*/}
-                <section className="hidden flex-col items-center mt-20 text-center">
+                <section className="flex-col items-center mt-20 text-center">
                     <h2 className="font-bold text-mainred text-[40px] font">
                         Hear what our mentees have to say about Insightful!
                     </h2>
+                    <div className="flex justify-evenly mt-16 text-left">
+                        <div>
+                            <div className="flex items-center pl-6 bg-mainpink">
+                                <div className="flex flex-col">
+                                    <h3 className="text-3xl font-bold text-mainred">
+                                        Shannon Williams
+                                    </h3>
+                                    <h4 className="w-60 text-2xl font-medium">
+                                        Transitioning into Entrepreneurship
+                                    </h4>
+                                </div>
+                                <div className="relative w-72 h-56">
+                                    <Image
+                                        fill
+                                        alt="shannon"
+                                        src="/shannon.png"
+                                        className="object-cover"
+                                    ></Image>
+                                </div>
+                            </div>
+                            <div className="flex items-center">
+                                <span className="self-start font-bold text-mainred text-[64px]">
+                                    “
+                                </span>
+                                <p className="mt-4 text-2xl max-w-[500px]">
+                                    Being surrounded by a community of ambitious
+                                    and supportive women who are passionate
+                                    about their businesses has been inspiring
+                                    and empowering.
+                                </p>
+                                <span className="self-end font-bold text-[64px] text-mainred">
+                                    &rdquo;
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <div className="flex items-center px-6 bg-mainpink">
+                                <div className="flex flex-col">
+                                    <h3 className="text-3xl font-bold text-mainred">
+                                        Aisha Smith
+                                    </h3>
+                                    <h4 className="w-60 text-2xl font-medium">
+                                        Learning Business Strategy
+                                    </h4>
+                                </div>
+                                <div className="relative w-72 h-56">
+                                    <Image
+                                        fill
+                                        alt="aisha"
+                                        src="/aisha.png"
+                                    ></Image>
+                                </div>
+                            </div>
+                            <div className="flex items-center">
+                                <span className="self-start font-bold text-mainred text-[64px]">
+                                    “
+                                </span>
+                                <p className="mt-4 text-2xl max-w-[500px]">
+                                    I have made meaningful connections with
+                                    other women in the program, which I believe
+                                    will continue to be a source of support and
+                                    collaboration for years to come.
+                                </p>
+                                <span className="self-end font-bold text-[64px] text-mainred">
+                                    &rdquo;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section className="flex flex-col items-center p-16 mt-16 text-center bg-mainpink">
                     <h2 className="font-title text-[30px]">
